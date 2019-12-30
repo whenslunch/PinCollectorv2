@@ -2,7 +2,7 @@
     <div>
         <ul>
             <li v-for="pin in pins" :key="pin.itemNumber">
-                <img :src="'https://collections-svc-dn.azurewebsites.net/api/GetImage/'+pin.itemNumber" style="height:10%;" />
+                <img :src="'https://collections-svc-dn.azurewebsites.net/api/GetImage/'+pin.itemNumber"  />
                 <h3> {{pin.city}} </h3>
                 <p> {{pin.country}} </p>
             </li>
@@ -18,12 +18,10 @@ export default {
     data() {
         return {
             pins: [],
-            images: [],
         };
     },
     async created() {
         await this.loadPins();
-        await this.loadImages();
     },
     methods: {
         async loadPins() {
@@ -31,13 +29,6 @@ export default {
             this.pins = await dataprovider.getPinData();
 
         },
-        async loadImages() {
-
-            this.pins.map( (pin) => {
-                this.images[pin.itemNumber] = dataprovider.getPinImage(pin.itemNumber);
-            })
-
-        }
     },
 };
 </script>
