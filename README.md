@@ -1,4 +1,4 @@
-# capp
+# PinCollector v2 - Using Vue
 
 ## Project setup
 ```
